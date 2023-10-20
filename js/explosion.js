@@ -1,16 +1,18 @@
 class Explosion {
-    constructor(gameScreen){
+    constructor(gameScreen, left, top){
         this.gameScreen = gameScreen;
-        this.left = 50 * Math.floor(Math.random() * 10);
-        this.top = 50 * Math.floor(Math.random() * 10);
-        console.log(this.top, this.left)
-        this.width=50;
-        this.height=50;
+        this.left = left;
+        this.top = top;
         this.element=document.createElement("img");
+        this.element.style.width="50px";
+        this.element.style.height="50px";
         this.element.src= "./images/explosion.png"
         this.element.style.position ="absolute";
         this.element.style.left=`${this.left}px`;
         this.element.style.top=`${this.top}px`;
+        this.element.classList.add("explosion")
         this.gameScreen.appendChild(this.element);
+        /*console.log(`explosion left ${this.left} explosion top ${this.top}`)*/
     }
 }
+

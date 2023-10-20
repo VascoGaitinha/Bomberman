@@ -53,7 +53,7 @@ class Game {
 
         for(let i = 0; i<this.obstacles.length; i++){
             const obstacle = this.obstacles[i];
-            obstacle.move();
+            obstacle.explode();            
 
             //Check for Collision
             if(this.player.didCollide(obstacle)){
@@ -72,8 +72,6 @@ class Game {
             if (this.lives===0){
               this.endGame();
         }
-
-        
         }
 
         
@@ -87,7 +85,7 @@ class Game {
         {
             this.loadingObstacle=true;
             setTimeout(()=>{
-                this.obstacles.push(new Obstacle(this.gameScreen));
+                this.obstacles.push(new Bomb(this.gameScreen));
                 this.loadingObstacle = false;
             }, 500)
         }
@@ -105,3 +103,4 @@ class Game {
         }
       }
     
+

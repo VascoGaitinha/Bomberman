@@ -83,7 +83,6 @@ window.onload = function () {
           break;
       }
     }
-    console.log("player position ", game.player.top, game.player.left)
 
   }
 
