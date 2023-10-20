@@ -1,0 +1,16 @@
+changed object.this.element.src - changed element image
+changed object.move() - changes element image
+setTimeout on obstacle.move()
+
+deleted object.updateposition() content , its empty now
+set     object. initial position x an y to = multiples of 50 for position spawn bomb	
+
+changed #game-screen:padding , it was 20px 0px
+		     size 500x500
+changed background: different image
+		    no animation
+		    repeat
+
+___________________________________________________________
+to do:
+creating explosion class

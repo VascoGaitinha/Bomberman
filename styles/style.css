@@ -1,0 +1,56 @@
+body {
+  padding: 0;
+  text-align: center;
+}
+
+#game-intro {
+  padding: 20px 0px;
+}
+
+#game-container {
+  display: flex;
+  width: 100vw;
+  padding: 20px 0px;
+  justify-content: center;
+}
+
+#game-screen {
+  display: none;
+  align-content: center;
+  padding: 0px 0px;
+  overflow: hidden;
+  position: relative;
+  background-image: url(../images/background.png);
+  background-repeat: repeat;
+}
+
+
+
+#game-end {
+  display: none;
+}
+
+.game-intro p {
+  font-size: 18px;
+  font-family: "Verdana";
+}
+
+.logo-img {
+  width: 350px;
+}
+
+.arrows-img {
+  width: 150px;
+}
+
+body button {
+  font-size: 30px;
+  background-color: #870007;
+  color: #fff;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
