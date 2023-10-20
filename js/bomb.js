@@ -1,5 +1,5 @@
 class Bomb {
-    constructor(gameScreen){
+    constructor(gameScreen, obstacles){
         this.gameScreen = gameScreen;
         this.left = 50 * Math.floor(Math.random() * 10);
         this.top = 50 * Math.floor(Math.random() * 10);
@@ -14,6 +14,7 @@ class Bomb {
         this.gameScreen.appendChild(this.element);
         this.element.classList.add("explosion")
         this.exploded = false;
+        this.obstacles= obstacles
     }
 
     explode(){
@@ -28,8 +29,6 @@ class Bomb {
           this.exploded = true;
   
     }
-
-
 
  generateExplosion(gamescreen, bombleft, bombtop) {
     // X axis
@@ -50,7 +49,9 @@ class Bomb {
         let explosions = document.querySelectorAll(".explosion")
         explosions.forEach(exp =>{
         exp.remove()
-        console.log(Game.obstacles)    
+        console.log(this.obstacles)
+        this.obstacles.shift()
+        console.log(this.obstacles)
 
     })
     }

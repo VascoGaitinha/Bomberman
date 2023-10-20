@@ -48,7 +48,6 @@ class Game {
     }
   
     update() {
-      console.log(this.obstacles)
 
         this.player.move();
 
@@ -86,7 +85,7 @@ class Game {
         {
             this.loadingObstacle=true;
             setTimeout(()=>{
-                this.obstacles.push(new Bomb(this.gameScreen));
+                this.obstacles.push(new Bomb(this.gameScreen, this.obstacles));
                 this.loadingObstacle = false;
             }, 500)
         }
