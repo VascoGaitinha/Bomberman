@@ -15,7 +15,7 @@ class Game {
       this.width = 500;
       this.obstacles = [];
       this.score = 0;
-      this.lives = 50;
+      this.lives = 1;
       this.gameIsOver = false;
       this.loadingObstacle = false;
     }
@@ -48,6 +48,7 @@ class Game {
     }
   
     update() {
+      console.log(this.obstacles)
 
         this.player.move();
 
@@ -90,6 +91,7 @@ class Game {
             }, 500)
         }
 
+        
 
         }
 
@@ -101,6 +103,4 @@ class Game {
             this.gameScreen.style.display="none";
             this.gameEndScreen.style.display="block";
         }
-      }
-    
-
+}

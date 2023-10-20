@@ -26,6 +26,7 @@ class Bomb {
         }, 4500);
         }
           this.exploded = true;
+  
     }
 
 
@@ -49,7 +50,9 @@ class Bomb {
         let explosions = document.querySelectorAll(".explosion")
         explosions.forEach(exp =>{
         exp.remove()
-})
+        console.log(Game.obstacles)    
+
+    })
     }
 
 }
