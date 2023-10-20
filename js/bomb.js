@@ -21,12 +21,13 @@ class Bomb {
         if(this.exploded===false){
         setTimeout(function() {
             this.generateExplosion(this.gameScreen, this.left, this.top)
+            this.exploded = true;
           }.bind(this), 3000)   
           setTimeout(() => {
             this.removeBomb()
         }, 4500);
         }
-          this.exploded = true;
+          
   
     }
 
@@ -49,11 +50,7 @@ class Bomb {
         let explosions = document.querySelectorAll(".explosion")
         explosions.forEach(exp =>{
         exp.remove()
-        console.log(this.obstacles)
         this.obstacles.shift()
-        console.log(this.obstacles)
-
     })
     }
-
 }

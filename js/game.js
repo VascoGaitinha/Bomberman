@@ -15,7 +15,7 @@ class Game {
       this.width = 500;
       this.obstacles = [];
       this.score = 0;
-      this.lives = 1;
+      this.lives = 1000;
       this.gameIsOver = false;
       this.loadingObstacle = false;
     }
@@ -53,7 +53,17 @@ class Game {
 
         for(let i = 0; i<this.obstacles.length; i++){
             const obstacle = this.obstacles[i];
-            obstacle.explode();            
+            obstacle.explode();   
+
+            //Check for bomb fire
+        this.obstacles.forEach(bomb => {
+            if(bomb.exploded === true){
+              if (this.player.left === bomb.left || this.player.top === bomb.top){
+                  console.log("apanhou fogo")
+                  this.lives --;
+              }}
+          });
+
 
             //Check for Collision
             if(this.player.didCollide(obstacle)){
@@ -81,17 +91,13 @@ class Game {
         score.innerHTML = this.score;
         lives.innerHTML = this.lives;
         
-        if(!this.obstacles.length && !this.loadingObstacle)
-        {
+        if(!this.obstacles.length && !this.loadingObstacle){
             this.loadingObstacle=true;
             setTimeout(()=>{
                 this.obstacles.push(new Bomb(this.gameScreen, this.obstacles));
                 this.loadingObstacle = false;
             }, 500)
         }
-
-        
-
         }
 
         endGame(){
