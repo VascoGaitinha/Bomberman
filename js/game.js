@@ -13,11 +13,11 @@ class Game {
     );
     this.height = 500;
     this.width = 500;
-    this.bombs = [];
+    this.obstacles = [];
     this.score = 0;
     this.lives = 1;
     this.gameIsOver = false;
-    this.loadingBomb = false;
+    this.loadingObstacle = false;
   }
   start() {
     // Set the height and width of the game screen
@@ -44,16 +44,16 @@ class Game {
           const obstacle = this.obstacles[i];
           obstacle.explode();
           //Check for Collision
-          if(this.player.didCollide(bomb)){
-              bomb.element.remove();
-              this.bombs.splice(i,1);
+          if(this.player.didCollide(obstacle)){
+              obstacle.element.remove();
+              this.obstacles.splice(i,1);
               this.lives --;
               console.log("colided")
           }
-          else if(bomb.top > this.height){
+          else if(obstacle.top > this.height){
               this.score ++;
-              this.bomb.element.remove();
-              this.bombs.splice(i,1);
+              obstacle.element.remove();
+              this.obstacles.splice(i,1);
           }
           if (this.lives===0){
             this.endGame();
@@ -63,26 +63,21 @@ class Game {
       let lives = document.getElementById("lives")
       score.innerHTML = this.score;
       lives.innerHTML = this.lives;
-      if(!this.bombs.length && !this.loadingBomb)
+      if(!this.obstacles.length && !this.loadingObstacle)
       {
-          this.loadingBomb=true;
+          this.loadingObstacle=true;
           setTimeout(()=>{
-              this.bombs.push(new Bomb(this.gameScreen, this.bombs, this.player.left, this.player.top, this.lives));
-              this.loadingBomb = false;
+              this.obstacles.push(new Bomb(this.gameScreen, this.obstacles));
+              this.loadingObstacle = false;
           }, 500)
       }
       }
       endGame(){
         this.gameIsOver=true;
         this.player.element.remove();
-        this.bombs.forEach(bomb =>{
-          bomb.element.remove()});
+        this.obstacles.forEach(obstacle =>{
+          obstacle.element.remove()});
           this.gameScreen.style.display="none";
           this.gameEndScreen.style.display="block";
       }
 }
-
-
-
-
-

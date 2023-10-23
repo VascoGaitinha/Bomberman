@@ -3,7 +3,6 @@ class Bomb {
         this.gameScreen = gameScreen;
         this.left = 50 * Math.floor(Math.random() * 10);
         this.top = 50 * Math.floor(Math.random() * 10);
-       
         this.element=document.createElement("img");
         this.element.src= "./images/bomb.png"
         this.element.style.width="50px";
@@ -17,13 +16,10 @@ class Bomb {
         this.obstacles= obstacles
     }
 
-    explode(playerleft, playertop, lives){
+    explode(){
         if(this.exploded===false){
         setTimeout(function() {
-            this.generateExplosion(this.gameScreen, this.left, this.top);
-            if(playerleft === this.left || playertop === this.top){
-                lives --
-            }
+            this.generateExplosion(this.gameScreen, this.left, this.top)
           }.bind(this), 3000)   
           setTimeout(() => {
             this.removeBomb()
@@ -52,10 +48,7 @@ class Bomb {
         let explosions = document.querySelectorAll(".explosion")
         explosions.forEach(exp =>{
         exp.remove()
-        console.log(this.obstacles)
         this.obstacles.shift()
-        console.log(this.obstacles)
-
     })
     }
 
