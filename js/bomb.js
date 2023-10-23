@@ -17,10 +17,13 @@ class Bomb {
         this.obstacles= obstacles
     }
 
-    explode(){
+    explode(playerleft, playertop, lives){
         if(this.exploded===false){
         setTimeout(function() {
-            this.generateExplosion(this.gameScreen, this.left, this.top)
+            this.generateExplosion(this.gameScreen, this.left, this.top);
+            if(playerleft === this.left || playertop === this.top){
+                lives --
+            }
           }.bind(this), 3000)   
           setTimeout(() => {
             this.removeBomb()

@@ -42,7 +42,7 @@ class Game {
       this.player.move();
       for(let i = 0; i<this.obstacles.length; i++){
           const obstacle = this.obstacles[i];
-          obstacle.explode();
+          obstacle.explode(this.left, this.right, this.lives);
           //Check for Collision
           if(this.player.didCollide(obstacle)){
               obstacle.element.remove();
