@@ -1,4 +1,4 @@
-class Bomb {
+class Mybomb {
     constructor(gameScreen, obstacles){
         this.gameScreen = gameScreen;
         this.left = 50 * Math.floor(Math.random() * 10);

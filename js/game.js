@@ -14,10 +14,13 @@ class Game {
     this.height = 500;
     this.width = 500;
     this.obstacles = [];
+    this.objectives = [];
     this.score = 0;
+    this.myBombs=0;
     this.lives = 3;
     this.gameIsOver = false;
-    this.loadingObstacle = false;
+    this.loadingObstacle = false
+    this.loadingObjectives = false;
   }
   start() {
     // Set the height and width of the game screen
@@ -40,8 +43,7 @@ class Game {
   }
   update() {
       this.player.move();
-      console.log(this.obstacles)
-
+   
 
 
       for(let i = 0; i<this.obstacles.length; i++){
@@ -62,18 +64,15 @@ class Game {
           // novo
 
 
-         /* //Check for Collision
+        //Check for Collision
           if(this.player.didCollide(obstacle)){
+            obstacle.pickedUp = true;
               obstacle.element.remove();
               this.obstacles.splice(i,1);
-              this.lives --;
+              this.score ++;
               console.log("colided")
           }
-          else if(obstacle.top > this.height){
-              this.score ++;
-              obstacle.element.remove();
-              this.obstacles.splice(i,1);
-          }*/
+
 
           if (this.lives<=0){
             this.lives=0;
@@ -86,7 +85,7 @@ class Game {
       lives.innerHTML = this.lives;
 
 
-      if(this.obstacles.length <3 && !this.loadingObstacle) // BOMB LIMIT
+      if(this.obstacles.length <1 && !this.loadingObstacle) // BOMB LIMIT
       {
           this.loadingObstacle=true;
           setTimeout(()=>{
@@ -94,6 +93,16 @@ class Game {
               this.loadingObstacle = false;
           }, 500)
       }
+
+      if(this.objectives.length <1 && !this.loadingObjectives) // Objectives LIMIT
+      {
+          this.loadingObjectives=true;
+          setTimeout(()=>{
+              this.objectives.push(new Objective (this.gameScreen));
+              this.loadingObjectives = false;
+          }, 500)
+      }
+
       }
       endGame(){
         this.gameIsOver=true;
