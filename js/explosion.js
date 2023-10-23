@@ -15,4 +15,3 @@ class Explosion {
         /*console.log(`explosion left ${this.left} explosion top ${this.top}`)*/
     }
 }
-
