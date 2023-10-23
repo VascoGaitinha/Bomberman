@@ -1,19 +1,19 @@
 class Mybomb {
-    constructor(gameScreen, obstacles){
+    constructor(gameScreen, playerleft, playertop,array){
         this.gameScreen = gameScreen;
-        this.left = 50 * Math.floor(Math.random() * 10);
-        this.top = 50 * Math.floor(Math.random() * 10);
+        this.left = playerleft;
+        this.top = playertop;
         this.element=document.createElement("img");
-        this.element.src= "./images/bomb.png"
+        this.element.src= "./images/myBomb.png"
         this.element.style.width="50px";
         this.element.style.height="50px";
         this.element.style.position ="absolute";
         this.element.style.left=`${this.left}px`;
         this.element.style.top=`${this.top}px`;
         this.gameScreen.appendChild(this.element);
-        this.element.classList.add("bomb")
+        this.element.classList.add("my-bomb")
         this.exploded = false;
-        this.obstacles= obstacles
+        this.obstacles= array
         this.pickedUp = false;
         this.explode() // adicionado
     }
@@ -49,7 +49,7 @@ class Mybomb {
     }
 
     removeBomb(){
-        let bombsImgs= document.querySelectorAll(".bomb")
+        let bombsImgs= document.querySelectorAll(".my-bomb")
         if(bombsImgs.length>0)
         bombsImgs[0].remove()
         this.obstacles.shift()

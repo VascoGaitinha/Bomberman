@@ -29,6 +29,7 @@ window.onload = function () {
       "ArrowUp",
       "ArrowRight",
       "ArrowDown",
+      " ", // space
     ];
 
     // Check if the pressed key is in the possibleKeystrokes array
@@ -61,6 +62,8 @@ window.onload = function () {
             game.player.directionY = 0;
           },15)
           break;
+        case " ":
+          game.player.placeBomb();
       }
     }
   }

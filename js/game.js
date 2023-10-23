@@ -13,10 +13,13 @@ class Game {
     );
     this.height = 500;
     this.width = 500;
+    //ARRAYS
     this.obstacles = [];
     this.objectives = [];
+    this.myBombs= [];    
+
     this.score = 0;
-    this.myBombs=0;
+    this.armas=0;
     this.lives = 3;
     this.gameIsOver = false;
     this.loadingObstacle = false
@@ -43,7 +46,6 @@ class Game {
   }
   update() {
       this.player.move();
-   
 
 
       for(let i = 0; i<this.obstacles.length; i++){
@@ -65,12 +67,11 @@ class Game {
 
 
         //Check for Collision
-          if(this.player.didCollide(obstacle)){
+         if(this.player.didCollide(obstacle)){
             obstacle.pickedUp = true;
               obstacle.element.remove();
               this.obstacles.splice(i,1);
-              this.score ++;
-              console.log("colided")
+             
           }
 
 

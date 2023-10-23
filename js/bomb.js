@@ -22,6 +22,8 @@ class Bomb {
         setTimeout(function() {
             this.generateExplosion(this.gameScreen, this.left, this.top)
           }.bind(this), 3000)   
+
+          
           setTimeout(() => {
             this.removeExplosion()
             this.removeBomb()
