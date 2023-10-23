@@ -6,7 +6,7 @@ class Explosion {
         this.element=document.createElement("img");
         this.element.style.width="50px";
         this.element.style.height="50px";
-        this.element.src= "./images/explosion.png"
+        this.element.src= "./images/explosion.gif"
         this.element.style.position ="absolute";
         this.element.style.left=`${this.left}px`;
         this.element.style.top=`${this.top}px`;

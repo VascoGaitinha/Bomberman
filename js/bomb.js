@@ -42,13 +42,15 @@ class Bomb {
         let explosions = document.querySelectorAll(".explosion")
         explosions.forEach(exp =>{
         exp.remove()
-        this.obstacles.shift()
     })
     }
 
     removeBomb(){
         let bombsImgs= document.querySelectorAll(".bomb")
+        if(bombsImgs.length>0)
         bombsImgs[0].remove()
+        this.obstacles.shift()
+
     }
 
 

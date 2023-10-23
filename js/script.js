@@ -39,22 +39,33 @@ window.onload = function () {
       switch (key) {
         case "ArrowLeft":
           game.player.directionX = -50;
-        
+          setTimeout(()=>{
+            game.player.directionX = 0;
+          },15)
           break;
         case "ArrowUp":
           game.player.directionY = -50;
+          setTimeout(()=>{
+            game.player.directionY = 0;
+          },15)
           break;
         case "ArrowRight":
           game.player.directionX = 50;
+          setTimeout(()=>{
+            game.player.directionX = 0;
+          },15)
           break;
         case "ArrowDown":
           game.player.directionY = 50;
+          setTimeout(()=>{
+            game.player.directionY = 0;
+          },15)
           break;
       }
     }
   }
 
-  function handleKeyup(event) {
+   /*function handleKeyup(event) {
     const key = event.key;
     const possibleKeystrokes = [
       "ArrowLeft",
@@ -64,7 +75,7 @@ window.onload = function () {
     ];
 
     // Check if the pressed key is in the possibleKeystrokes array
-    if (possibleKeystrokes.includes(key)) {
+   if (possibleKeystrokes.includes(key)) {
       event.preventDefault();
 
       // Update player's directionX and directionY based on the key pressed
@@ -84,9 +95,9 @@ window.onload = function () {
       }
     }
 
-  }
+  }*/
 
   // Add the handleKeydown function as an event listener for the keydown event
   window.addEventListener("keydown", handleKeydown);
-  window.addEventListener("keyup", handleKeyup);
+ /* window.addEventListener("keyup", handleKeyup);*/
 };

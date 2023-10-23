@@ -15,7 +15,7 @@ class Game {
     this.width = 500;
     this.obstacles = [];
     this.score = 0;
-    this.lives = 1;
+    this.lives = 3;
     this.gameIsOver = false;
     this.loadingObstacle = false;
   }
@@ -45,12 +45,12 @@ class Game {
 
 
       for(let i = 0; i<this.obstacles.length; i++){
-
+        
           const obstacle = this.obstacles[i];
 
 
           //novo
-          setTimeout(()=>{
+          setInterval(()=>{
             obstacle.exploded = true}, 3000)
           if(obstacle.exploded === true){
           
@@ -73,11 +73,12 @@ class Game {
               this.score ++;
               obstacle.element.remove();
               this.obstacles.splice(i,1);
-          }
+          }*/
+
           if (this.lives<=0){
             this.lives=0;
             this.endGame();
-      }*/
+      }
       }
       let score  = document.getElementById("score")
       let lives = document.getElementById("lives")
@@ -85,7 +86,7 @@ class Game {
       lives.innerHTML = this.lives;
 
 
-      if(this.obstacles.length <3 && !this.loadingObstacle)
+      if(this.obstacles.length <3 && !this.loadingObstacle) // BOMB LIMIT
       {
           this.loadingObstacle=true;
           setTimeout(()=>{
