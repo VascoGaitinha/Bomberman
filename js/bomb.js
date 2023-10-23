@@ -11,7 +11,7 @@ class Bomb {
         this.element.style.left=`${this.left}px`;
         this.element.style.top=`${this.top}px`;
         this.gameScreen.appendChild(this.element);
-        this.element.classList.add("explosion")
+        this.element.classList.add("bomb")
         this.exploded = false;
         this.obstacles= obstacles
         this.explode() // adicionado
@@ -23,6 +23,7 @@ class Bomb {
             this.generateExplosion(this.gameScreen, this.left, this.top)
           }.bind(this), 3000)   
           setTimeout(() => {
+            this.removeExplosion()
             this.removeBomb()
         }, 3350);
 
@@ -37,12 +38,18 @@ class Bomb {
 
 }
 
-    removeBomb(){
+    removeExplosion(){
         let explosions = document.querySelectorAll(".explosion")
         explosions.forEach(exp =>{
         exp.remove()
         this.obstacles.shift()
     })
     }
+
+    removeBomb(){
+        let bombsImgs= document.querySelectorAll(".bomb")
+        bombsImgs[0].remove()
+    }
+
 
 }

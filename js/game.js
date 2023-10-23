@@ -40,7 +40,12 @@ class Game {
   }
   update() {
       this.player.move();
+      console.log(this.obstacles)
+
+
+
       for(let i = 0; i<this.obstacles.length; i++){
+
           const obstacle = this.obstacles[i];
 
 
@@ -48,14 +53,16 @@ class Game {
           setTimeout(()=>{
             obstacle.exploded = true}, 3000)
           if(obstacle.exploded === true){
+          
           if (this.player.left === obstacle.left || this.player.top === obstacle.top)
           {
             setTimeout(()=>{this.lives --},250);
+            
           }}
           // novo
 
 
-          //Check for Collision
+         /* //Check for Collision
           if(this.player.didCollide(obstacle)){
               obstacle.element.remove();
               this.obstacles.splice(i,1);
@@ -70,13 +77,15 @@ class Game {
           if (this.lives<=0){
             this.lives=0;
             this.endGame();
-      }
+      }*/
       }
       let score  = document.getElementById("score")
       let lives = document.getElementById("lives")
       score.innerHTML = this.score;
       lives.innerHTML = this.lives;
-      if(!this.obstacles.length && !this.loadingObstacle)
+
+
+      if(this.obstacles.length <3 && !this.loadingObstacle)
       {
           this.loadingObstacle=true;
           setTimeout(()=>{
