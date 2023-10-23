@@ -42,7 +42,19 @@ class Game {
       this.player.move();
       for(let i = 0; i<this.obstacles.length; i++){
           const obstacle = this.obstacles[i];
-          obstacle.explode();
+
+
+          //novo
+          setTimeout(()=>{
+            obstacle.exploded = true}, 3000)
+          if(obstacle.exploded === true){
+          if (this.player.left === obstacle.left || this.player.top === obstacle.top)
+          {
+            setTimeout(()=>{this.lives --},250);
+          }}
+          // novo
+
+
           //Check for Collision
           if(this.player.didCollide(obstacle)){
               obstacle.element.remove();
@@ -55,7 +67,8 @@ class Game {
               obstacle.element.remove();
               this.obstacles.splice(i,1);
           }
-          if (this.lives===0){
+          if (this.lives<=0){
+            this.lives=0;
             this.endGame();
       }
       }

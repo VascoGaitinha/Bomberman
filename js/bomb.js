@@ -14,34 +14,27 @@ class Bomb {
         this.element.classList.add("explosion")
         this.exploded = false;
         this.obstacles= obstacles
+        this.explode() // adicionado
     }
 
     explode(){
-        if(this.exploded===false){
         setTimeout(function() {
+            console.log("generateExplosion")
             this.generateExplosion(this.gameScreen, this.left, this.top)
           }.bind(this), 3000)   
           setTimeout(() => {
             this.removeBomb()
-        }, 4500);
-        }
-          this.exploded = true;
-  
+        }, 3350);
+
     }
 
  generateExplosion(gamescreen, bombleft, bombtop) {
-    // X axis
-    let i = 0;
-    function generateExplosionIteration() {
-        if (i < 10) {
+
+        for (let i=0; i<10; i++){
             new Explosion(gamescreen, i * 50, bombtop);
             new Explosion(gamescreen, bombleft, i * 50);
-            i++;
-            setTimeout(generateExplosionIteration, 10); // 1000 milliseconds (1 second) delay
         }
-    }
 
-    generateExplosionIteration(); // Start the loop
 }
 
     removeBomb(){
