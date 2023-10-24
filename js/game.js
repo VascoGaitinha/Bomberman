@@ -14,17 +14,17 @@ class Game {
     this.height = 500;
     this.width = 500;
     //ARRAYS
-    this.obstacles = [];
+    this.bombs = [];
     this.objectives = [];
     this.myBombs= [];    
-
     this.score = 0;
-    this.armas=0;
+    this.armas = 0;
     this.lives = 3;
     this.gameIsOver = false;
-    this.loadingObstacle = false
+    this.loadingBomb = false
     this.loadingObjectives = false;
   }
+  
   start() {
     // Set the height and width of the game screen
     this.gameScreen.style.height = `${this.height}px`;
@@ -48,17 +48,17 @@ class Game {
       this.player.move();
 
 
-      for(let i = 0; i<this.obstacles.length; i++){
+      for(let i = 0; i<this.bombs.length; i++){
         
-          const obstacle = this.obstacles[i];
+          const bomb = this.bombs[i];
 
 
           //novo
           setInterval(()=>{
-            obstacle.exploded = true}, 3000)
-          if(obstacle.exploded === true){
+            bomb.exploded = true}, 3000)
+          if(bomb.exploded === true){
           
-          if (this.player.left === obstacle.left || this.player.top === obstacle.top)
+          if (this.player.left === bomb.left || this.player.top === bomb.top)
           {
             setTimeout(()=>{this.lives --},250);
             
@@ -67,11 +67,11 @@ class Game {
 
 
         //Check for Collision
-         if(this.player.didCollide(obstacle)){
-            obstacle.pickedUp = true;
-              obstacle.element.remove();
-              this.obstacles.splice(i,1);
-             
+          if(this.player.didCollide(bomb)){
+            bomb.pickedUp = true;
+              bomb.element.remove();
+              this.bombs.splice(i,1);
+              
           }
 
 
@@ -86,12 +86,12 @@ class Game {
       lives.innerHTML = this.lives;
 
 
-      if(this.obstacles.length <1 && !this.loadingObstacle) // BOMB LIMIT
+      if(this.bombs.length <1 && !this.loadingBomb) // BOMB LIMIT
       {
-          this.loadingObstacle=true;
+          this.loadingBomb=true;
           setTimeout(()=>{
-              this.obstacles.push(new Bomb(this.gameScreen, this.obstacles));
-              this.loadingObstacle = false;
+              this.bombs.push(new Bomb(this.gameScreen, this.bombs));
+              this.loadingBomb = false;
           }, 500)
       }
 
@@ -108,8 +108,8 @@ class Game {
       endGame(){
         this.gameIsOver=true;
         this.player.element.remove();
-        this.obstacles.forEach(obstacle =>{
-          obstacle.element.remove()});
+        this.bombs.forEach(bomb =>{
+          bomb.element.remove()});
           this.gameScreen.style.display="none";
           this.gameEndScreen.style.display="block";
       }

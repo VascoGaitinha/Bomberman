@@ -32,7 +32,6 @@ class Bomb {
     }
 
     generateExplosion(gamescreen, bombleft, bombtop) {
-
         if(this.pickedUp===false){
         console.log("BOMBA NAO APANHADA")
         for (let i=0; i<10; i++){
@@ -40,7 +39,6 @@ class Bomb {
             new Explosion(gamescreen, bombleft, i * 50);
         }}
         else if(this.pickedUp === true){console.log("BOMBA APANHADA")}
-
 }
 
     removeExplosion(){
