@@ -14,6 +14,7 @@ class myBomb {
         this.element.classList.add("my-bomb")
         this.exploded = false;
         this.obstacles= obstacles
+        this.pickedUp=false;
         this.explode() // adicionado
     }
 

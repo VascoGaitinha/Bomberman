@@ -16,13 +16,16 @@ class Game {
     //ARRAYS
     this.bombs = [];
     this.objectives = [];
-    this.myBombs= [];    
+    this.myBombs= []; 
+    this.ammunitions= [];
     this.score = 0;
-    this.armas = 0;
+    this.ammunition = 0;
     this.lives = 3;
     this.gameIsOver = false;
     this.loadingBomb = false
     this.loadingObjectives = false;
+    this.loadingAmmunition = false;
+
   }
   
   start() {
@@ -47,6 +50,22 @@ class Game {
   update() {
       this.player.move();
 
+
+                    //COMPARÇÕES
+//-------------------------------------------------------------------------------------------
+    for ( let i = 0 ; i<this.ammunitions.length; i++){
+      const ammo = this.ammunitions[i];
+      if(this.ammunitions.length>0){
+      console.log(this.ammunitions)
+      if (this.player.left === ammo.left && this.player.top === ammo.top){
+        	this.ammunition ++
+          this.ammunitions[0].destroyed()
+          console.log(this.ammunitions)
+          this.ammunitions.shift()
+      }}
+    }
+
+
 //-------------------------------------------------------------------------------------------
       for(let i=0; i<this.myBombs.length;i++){
         const myBomb = this.myBombs[i];
@@ -68,8 +87,6 @@ class Game {
         
           const bomb = this.bombs[i];
 
-
-          //novo
           setInterval(()=>{
             bomb.exploded = true}, 3000)
           if(bomb.exploded === true){
@@ -79,16 +96,6 @@ class Game {
             setTimeout(()=>{this.lives --},250);
             
           }}
-          // novo
-
-
-        //Check for Collision
-          /*if(this.player.didCollide(bomb)){
-            bomb.pickedUp = true;
-              bomb.element.remove();
-              this.bombs.splice(i,1);
-              
-          }*/
 
 
           if (this.lives<=0){
@@ -98,11 +105,14 @@ class Game {
       }
       let score  = document.getElementById("score")
       let lives = document.getElementById("lives")
+      let ammunition = document.getElementById("ammunition")
       score.innerHTML = this.score;
       lives.innerHTML = this.lives;
+      ammunition.innerHTML = this.ammunition;
 
-
-      if(this.bombs.length <1 && !this.loadingBomb) // BOMB LIMIT
+// CREATE BOMBS ----------------------------------------------------------------------------
+    
+  	if(this.bombs.length <1 && !this.loadingBomb) 
       {
           this.loadingBomb=true;
           setTimeout(()=>{
@@ -111,7 +121,9 @@ class Game {
           }, 500)
       }
 
-      if(this.objectives.length <1 && !this.loadingObjectives) // Objectives LIMIT
+// CREATE OBJECTIVES ----------------------------------------------------------------------------
+
+      if(this.objectives.length <1 && !this.loadingObjectives) 
       {
           this.loadingObjectives=true;
           setTimeout(()=>{
@@ -120,7 +132,23 @@ class Game {
           }, 500)
       }
 
+// CREATE AMMUNITION ----------------------------------------------------------------------------
+
+      if(this.ammunitions.length <1 && !this.loadingAmmunition) 
+      {
+          this.loadingAmmunition=true;
+          setTimeout(()=>{
+              this.ammunitions.push(new Ammunition (this.gameScreen));
+              this.loadingAmmunition = false;
+          }, 500)
       }
+
+      }
+
+
+
+
+
       endGame(){
         this.gameIsOver=true;
         this.player.element.remove();
