@@ -4,7 +4,7 @@ class myBomb {
         this.left = playerleft;
         this.top = playertop;
         this.element=document.createElement("img");
-        this.element.src= "./images/myBomb.png"
+        this.element.src= "./images/dinamite.png"
         this.element.style.width="50px";
         this.element.style.height="50px";
         this.element.style.position ="absolute";
@@ -20,7 +20,7 @@ class myBomb {
 
     explode(){
         setTimeout(function() {
-            this.generateExplosion(this.gameScreen, this.left, this.top)
+            this.element.src="./images/myExplosion.gif"
           }.bind(this), 3000)   
           setTimeout(() => {
             this.removeExplosion()
@@ -28,17 +28,6 @@ class myBomb {
         }, 3350);
 
     }
-
-    generateExplosion(gamescreen, bombleft, bombtop) {
-
-
-        for (let i=0; i<10; i++){
-            new Explosion(gamescreen, i * 50, bombtop);
-            new Explosion(gamescreen, bombleft, i * 50);
-        }
-        
-
-}
 
     removeExplosion(){
         let explosions = document.querySelectorAll(".explosion")

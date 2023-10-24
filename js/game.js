@@ -85,7 +85,7 @@ class Game {
           myBomb.exploded = true}, 3000)
 
         if(this.objectives.length>0 && myBomb.exploded===true){
-        if(myBomb.left === this.objectives[0].left || myBomb.top === this.objectives[0].top){
+        if(myBomb.left === this.objectives[0].left && myBomb.top === this.objectives[0].top){
           console.log("MESMA POSICAO DO OBJETIVO  ")
           this.score ++
           this.objectives[0].destroyed()
