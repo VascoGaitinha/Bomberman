@@ -18,13 +18,14 @@ class Game {
     this.objectives = [];
     this.myBombs= []; 
     this.ammunitions= [];
-    this.score = 0;
+    this.score = 10;
     this.ammunition = 0;
     this.lives = 3;
     this.gameIsOver = false;
     this.loadingBomb = false
     this.loadingObjectives = false;
     this.loadingAmmunition = false;
+    this.numberOfBombs = 1;
 
   }
   
@@ -47,8 +48,14 @@ class Game {
     this.update();
     window.requestAnimationFrame(() => this.gameLoop());
   }
+
+// -------------------------------- UPDATE -------------------------------------------------
   update() {
       this.player.move();
+      this.checkScore();
+      console.log(this.numberOfBombs)
+     /* if(this.objectives.length>0){
+        setInterval(()=>{this.objectives[0].move();},5000)}*/
 
 
                     //COMPARÇÕES
@@ -112,7 +119,7 @@ class Game {
 
 // CREATE BOMBS ----------------------------------------------------------------------------
     
-  	if(this.bombs.length <1 && !this.loadingBomb) 
+  	if(this.bombs.length < this.numberOfBombs && !this.loadingBomb) 
       {
           this.loadingBomb=true;
           setTimeout(()=>{
@@ -146,8 +153,20 @@ class Game {
       }
 
 
+// GAME CONDITIONS ------------------------------------------------------------------------------
+      checkScore(){
+    
+        if(this.score >= 2 && this.score < 7){ // level 2
+          this.numberOfBombs = 2
+        }
+        if(this.score > 5 && this.score < 10){ // level 3
+          this.numberOfBombs = 3 
+        }
+        if(this.score >= 8 && this.score < 13){ // level 4
+          this.numberOfBombs = 4
+        }
 
-
+      }
 
       endGame(){
         this.gameIsOver=true;

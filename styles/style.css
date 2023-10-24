@@ -53,3 +53,18 @@ body button {
   margin-bottom: 20px;
 }
 
+.game-slot{
+  background: rgb(95,6,65);
+  background: radial-gradient(circle, rgba(95,6,65,0.8155637254901961) 30%, rgba(95,6,44,1) 90%);
+
+}
+
+.game-slot img {
+  width:25px;
+  height: 25px;
+}
+
+.status-div{
+  display: flex;
+  align-items: center;
+}
