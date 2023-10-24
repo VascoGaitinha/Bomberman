@@ -3,6 +3,10 @@ body {
   text-align: center;
 }
 
+body p{
+  font-size: 1.5lem;
+}
+
 #game-intro {
   padding: 20px 0px;
 }
@@ -67,4 +71,22 @@ body button {
 .status-div{
   display: flex;
   align-items: center;
+}
+
+#new-level{
+  display:block;
+  position: absolute;
+  left:100px;
+  top:40px;
+  border: 1px dotted red;
+}
+
+#plus-ammunition{
+  display:none;
+}
+
+#status-div{
+  background-color: red;
+
+
 }

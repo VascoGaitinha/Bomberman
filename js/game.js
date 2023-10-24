@@ -18,9 +18,9 @@ class Game {
     this.objectives = [];
     this.myBombs= []; 
     this.ammunitions= [];
-    this.score = 10;
+    this.score = 0;
     this.ammunition = 0;
-    this.lives = 3;
+    this.lives = 200;
     this.gameIsOver = false;
     this.loadingBomb = false
     this.loadingObjectives = false;
@@ -62,9 +62,14 @@ class Game {
 //-------------------------------------------------------------------------------------------
     for ( let i = 0 ; i<this.ammunitions.length; i++){
       const ammo = this.ammunitions[i];
+      let ammunitionimage= document.getElementById("plus-ammunition")
+
       if(this.ammunitions.length>0){
       console.log(this.ammunitions)
       if (this.player.left === ammo.left && this.player.top === ammo.top){
+          ammunitionimage.style.display = "block";
+          setInterval(()=>{ammunitionimage.style.display = "none";}, 750
+          )
         	this.ammunition ++
           this.ammunitions[0].destroyed()
           console.log(this.ammunitions)
@@ -110,10 +115,10 @@ class Game {
             this.endGame();
       }
       }
-      let score  = document.getElementById("score")
+     /* let score  = document.getElementById("score")*/
       let lives = document.getElementById("lives")
       let ammunition = document.getElementById("ammunition")
-      score.innerHTML = this.score;
+    /*  score.innerHTML = this.score;*/
       lives.innerHTML = this.lives;
       ammunition.innerHTML = this.ammunition;
 
@@ -141,13 +146,13 @@ class Game {
 
 // CREATE AMMUNITION ----------------------------------------------------------------------------
 
-      if(this.ammunitions.length <1 && !this.loadingAmmunition) 
+      if(this.ammunitions.length <1 && !this.loadingAmmunition && this.ammunition < 1) 
       {
           this.loadingAmmunition=true;
           setTimeout(()=>{
               this.ammunitions.push(new Ammunition (this.gameScreen));
               this.loadingAmmunition = false;
-          }, 500)
+          }, 3000)
       }
 
       }
@@ -155,15 +160,20 @@ class Game {
 
 // GAME CONDITIONS ------------------------------------------------------------------------------
       checkScore(){
+
+        let levelDisplay = document.getElementById("level-display")
     
-        if(this.score >= 2 && this.score < 7){ // level 2
+        if(this.score > 2 && this.score < 7){ // level 2
           this.numberOfBombs = 2
+          levelDisplay.innerHTML = "Level 2"
         }
         if(this.score > 5 && this.score < 10){ // level 3
           this.numberOfBombs = 3 
+          levelDisplay.innerHTML = "Level 3"
         }
-        if(this.score >= 8 && this.score < 13){ // level 4
+        if(this.score > 8 && this.score < 13){ // level 4
           this.numberOfBombs = 4
+          levelDisplay.innerHTML = "Level 4"
         }
 
       }
