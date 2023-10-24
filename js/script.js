@@ -63,7 +63,7 @@ window.onload = function () {
           },15)
           break;
         case " ":
-          game.player.placeBomb();
+          game.myBombs.push(new myBomb(game.gameScreen, game.player.left, game.player.top, game.myBombs))
       }
     }
   }

@@ -47,7 +47,23 @@ class Game {
   update() {
       this.player.move();
 
+//-------------------------------------------------------------------------------------------
+      for(let i=0; i<this.myBombs.length;i++){
+        const myBomb = this.myBombs[i];
 
+        setInterval(()=>{
+          myBomb.exploded = true}, 3000)
+
+        if(this.objectives.length>0 && myBomb.exploded===true){
+        if(myBomb.left === this.objectives[0].left || myBomb.top === this.objectives[0].top){
+          console.log("MESMA POSICAO DO OBJETIVO  ")
+          this.score ++
+          this.objectives[0].destroyed()
+          this.objectives.shift()
+          
+        }}
+      }
+//------------------------------------------------------------------------------------------
       for(let i = 0; i<this.bombs.length; i++){
         
           const bomb = this.bombs[i];
@@ -67,12 +83,12 @@ class Game {
 
 
         //Check for Collision
-          if(this.player.didCollide(bomb)){
+          /*if(this.player.didCollide(bomb)){
             bomb.pickedUp = true;
               bomb.element.remove();
               this.bombs.splice(i,1);
               
-          }
+          }*/
 
 
           if (this.lives<=0){

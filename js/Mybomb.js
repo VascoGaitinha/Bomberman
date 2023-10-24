@@ -1,5 +1,5 @@
-class Mybomb {
-    constructor(gameScreen, playerleft, playertop,array){
+class myBomb {
+    constructor(gameScreen, playerleft, playertop, obstacles){
         this.gameScreen = gameScreen;
         this.left = playerleft;
         this.top = playertop;
@@ -13,8 +13,7 @@ class Mybomb {
         this.gameScreen.appendChild(this.element);
         this.element.classList.add("my-bomb")
         this.exploded = false;
-        this.obstacles= array
-        this.pickedUp = false;
+        this.obstacles= obstacles
         this.explode() // adicionado
     }
 
@@ -31,13 +30,12 @@ class Mybomb {
 
     generateExplosion(gamescreen, bombleft, bombtop) {
 
-        if(this.pickedUp===false){
-        console.log("BOMBA NAO APANHADA")
+
         for (let i=0; i<10; i++){
             new Explosion(gamescreen, i * 50, bombtop);
             new Explosion(gamescreen, bombleft, i * 50);
-        }}
-        else if(this.pickedUp === true){console.log("BOMBA APANHADA")}
+        }
+        
 
 }
 
@@ -49,9 +47,8 @@ class Mybomb {
     }
 
     removeBomb(){
-        let bombsImgs= document.querySelectorAll(".my-bomb")
-        if(bombsImgs.length>0)
-        bombsImgs[0].remove()
+
+        this.element.remove()
         this.obstacles.shift()
 
     }

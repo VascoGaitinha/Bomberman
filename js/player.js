@@ -69,9 +69,4 @@ class Player {
     }
   }
 
-  placeBomb(){
-    new Mybomb(this.gameScreen, this.left, this.top)
-  }
-
-
 }

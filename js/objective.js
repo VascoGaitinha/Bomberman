@@ -13,4 +13,7 @@ class Objective {
         this.gameScreen.appendChild(this.element);
         this.element.classList.add("objective")
     }
+    destroyed(){
+        this.element.remove()
+    }
 }
