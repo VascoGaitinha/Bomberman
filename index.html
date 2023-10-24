@@ -19,11 +19,11 @@
       </div>
 
       <div id="game-container" class="game-slot">
-        <div>
+        <div id="status-list">
           <p id="level-display">Level 1</p>
          <!-- <div class = status-div><img src="./images/star.png" alt=""> <p> : <span id="score">0</span></p> </div> -->
           <div class = status-div><img src="./images/heart.gif" alt=""><p> : <span id="lives">3</span></p></div>
-          <div class = status-div><img id="plus-ammunition"src="./images/plus1.jpg"/> <img src="./images/ammunition.png" alt=""><p> : <span id="ammunition">0</span></p></div>
+          <div class = status-div><img src="./images/ammunition.png" alt=""><p> : <span id="ammunition">0</span></p></div>
         </div>
         <!-- #game-screen is initially hidden using CSS style display: none -->
         <div id="game-screen"></div>
@@ -33,6 +33,7 @@
       <div id="game-end" class="game-slot">
         <img src="./images/logo.png" alt="" class="logo-img" />
         <h1>Game Over</h1>
+        <p id="game-score"></p>
         <br />
         <button id="restart-button">Restart</button>
       </div>

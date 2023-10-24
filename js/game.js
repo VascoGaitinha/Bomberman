@@ -20,7 +20,7 @@ class Game {
     this.ammunitions= [];
     this.score = 0;
     this.ammunition = 0;
-    this.lives = 200;
+    this.lives = 10;
     this.gameIsOver = false;
     this.loadingBomb = false
     this.loadingObjectives = false;
@@ -30,6 +30,9 @@ class Game {
   }
   
   start() {
+    let statusList = document.getElementById("status-list")
+
+    statusList.style.display= "block";
     // Set the height and width of the game screen
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
@@ -62,14 +65,10 @@ class Game {
 //-------------------------------------------------------------------------------------------
     for ( let i = 0 ; i<this.ammunitions.length; i++){
       const ammo = this.ammunitions[i];
-      let ammunitionimage= document.getElementById("plus-ammunition")
 
       if(this.ammunitions.length>0){
       console.log(this.ammunitions)
       if (this.player.left === ammo.left && this.player.top === ammo.top){
-          ammunitionimage.style.display = "block";
-          setInterval(()=>{ammunitionimage.style.display = "none";}, 750
-          )
         	this.ammunition ++
           this.ammunitions[0].destroyed()
           console.log(this.ammunitions)
@@ -115,10 +114,10 @@ class Game {
             this.endGame();
       }
       }
-     /* let score  = document.getElementById("score")*/
+     let score  = document.getElementById("game-score")
       let lives = document.getElementById("lives")
       let ammunition = document.getElementById("ammunition")
-    /*  score.innerHTML = this.score;*/
+      score.innerHTML = ("Objectives Destroyed: "+this.score)
       lives.innerHTML = this.lives;
       ammunition.innerHTML = this.ammunition;
 
@@ -179,11 +178,15 @@ class Game {
       }
 
       endGame(){
+        let statusList = document.getElementById("status-list")
+
+        statusList.style.display= "none";
         this.gameIsOver=true;
         this.player.element.remove();
         this.bombs.forEach(bomb =>{
           bomb.element.remove()});
           this.gameScreen.style.display="none";
           this.gameEndScreen.style.display="block";
+
       }
 }

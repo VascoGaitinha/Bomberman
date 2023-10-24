@@ -85,8 +85,12 @@ body button {
   display:none;
 }
 
-#status-div{
-  background-color: red;
-
-
+#status-list{
+ 
+  position: absolute;
+  top:150px;
+  left:150px;
+  font-size:1.75em;
+  text-shadow: #870007;
+  display:none;
 }
