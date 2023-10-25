@@ -27,6 +27,7 @@ body {
 }
 
 #game-screen {
+  margin-top:25px;
   display: none;
   align-content: center;
   padding: 0px 0px;
@@ -78,8 +79,8 @@ body button {
 #lvl-up-div{
   position: absolute;
   font-size:80px;
-  left: 440px;
-  top:20px;
+  left: 500px;
+  top:70px;
   opacity: 0.66;
   text-shadow: rgb(127, 36, 16) 2px 5px, red 3px 6px;
   display:none;
@@ -188,16 +189,16 @@ background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
 }
 
 #tijolinho {
-  
   background-image: url(../images/tijolinho.png);
   background-size: 50px;
   background-repeat: repeat;
   width: 550px;
   height: 550px;
   position: absolute;
-  top: 0px;
-  left: 345px;
+  top: 25px;
+  left: 405px;
   z-index: -1;
   display:none;
   opacity: 0.5; /* Set the desired opacity value (0.0 to 1.0) */
+  box-shadow: 5px 5px 5px black, -4px -4px 5px black;
 }
