@@ -28,7 +28,7 @@ class Game {
     this.myBombs= []; 
     this.ammunitions= [];
     this.livesArray = [];
-    this.checkPoint = [false, false, false]
+    this.checkPoint = [false, false, false, false]
     //STATUS
     this.score = 0;
     this.ammunition = 0;
@@ -227,6 +227,17 @@ class Game {
             levelUpDiv.style.display = "block";
             setTimeout(()=>{levelUpDiv.style.display = "none"},1500)
             this.checkPoint[2] = true
+          }
+        }
+
+        if(this.score > 12){ // level 5
+          this.numberOfBombs = 5
+          levelDisplay.innerHTML = "Level 5"
+          if(this.checkPoint[3]===false){
+            let levelUpDiv = document.getElementById("lvl-up-div")
+            levelUpDiv.style.display = "block";
+            setTimeout(()=>{levelUpDiv.style.display = "none"},1500)
+            this.checkPoint[3] = true
           }
         }
 
