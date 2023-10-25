@@ -66,6 +66,13 @@ window.onload = function () {
           if(game.ammunition>0){
           game.myBombs.push(new myBomb(game.gameScreen, game.player.left, game.player.top, game.myBombs))
           game.ammunition --;
+          let ammunition = document.getElementById("ammunition")
+          ammunition.style.color = "red"
+          ammunition.style.fontWeight = "bold"
+          setInterval(() => {
+            ammunition.style.color = "black"
+          ammunition.style.fontWeight = "normal"
+          }, 1000);
           }
         }
     }

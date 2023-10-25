@@ -1,10 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+*{
+  font-family: "Shadows Into Light";
+}
+
 body {
   padding: 0;
   text-align: center;
-}
-
-body p{
-  font-size: 1.5lem;
 }
 
 #game-intro {
@@ -64,8 +66,8 @@ body button {
 }
 
 .game-slot img {
-  width:25px;
-  height: 25px;
+  width:40px;
+  height:40px;
 }
 
 .status-div{
@@ -73,15 +75,13 @@ body button {
   align-items: center;
 }
 
-#new-level{
-  display:block;
+#lvl-up-div{
   position: absolute;
-  left:100px;
-  top:40px;
-  border: 1px dotted red;
-}
-
-#plus-ammunition{
+  font-size:100px;
+  left: 430px;
+  top:20px;
+  opacity: 0.66;
+  text-shadow: yellow 2px 5px, yellowgreen 4px 10px;
   display:none;
 }
 
@@ -90,7 +90,12 @@ body button {
   position: absolute;
   top:150px;
   left:150px;
-  font-size:1.75em;
+  font-size:2.75em;
   text-shadow: #870007;
   display:none;
 }
+#status-list p{
+  margin:0 auto;
+ 
+}
+

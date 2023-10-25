@@ -21,11 +21,11 @@ class myBomb {
     explode(){
         setTimeout(function() {
             this.element.src="./images/myExplosion.gif"
-          }.bind(this), 3000)   
+          }.bind(this), 1500)   
           setTimeout(() => {
             this.removeExplosion()
             this.removeBomb()
-        }, 3350);
+        }, 1750);
 
     }
 

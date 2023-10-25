@@ -3,13 +3,22 @@ class Game {
     this.startScreen = document.getElementById("game-intro");
     this.gameScreen = document.getElementById("game-screen");
     this.gameEndScreen = document.getElementById("game-end");
+    this.gameScreen.style.boxShadow = "rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, " +
+    "rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, " +
+    "rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, " +
+    "rgba(0, 0, 0, 0.06) 0px 2px 1px, " +
+    "rgba(0, 0, 0, 0.09) 0px 4px 2px, " +
+    "rgba(0, 0, 0, 0.09) 0px 8px 4px, " +
+    "rgba(0, 0, 0, 0.09) 0px 16px 8px, " +
+    "rgba(0, 0, 0, 0.09) 0px 32px 16px";
+    this.gameScreen.style.borderRadius= "5%"
       this.player = new Player(
       this.gameScreen,
       200,
       500,
       50,
       50,
-      "./images/car.png"
+      "./images/character.png"
     );
     this.height = 500;
     this.width = 500;
@@ -18,14 +27,20 @@ class Game {
     this.objectives = [];
     this.myBombs= []; 
     this.ammunitions= [];
-    this.score = 0;
+    this.livesArray = [];
+    this.checkPoint = [false, false, false]
+    //STATUS
+    this.score = 3;
     this.ammunition = 0;
     this.lives = 10;
+    this.numberOfBombs = 1;
+
+    //LOADINGS
     this.gameIsOver = false;
     this.loadingBomb = false
     this.loadingObjectives = false;
     this.loadingAmmunition = false;
-    this.numberOfBombs = 1;
+    this.loadingLives = false;
 
   }
   
@@ -60,29 +75,61 @@ class Game {
      /* if(this.objectives.length>0){
         setInterval(()=>{this.objectives[0].move();},5000)}*/
 
+        let score  = document.getElementById("game-score")
+        let lives = document.getElementById("lives")
+        let ammunition = document.getElementById("ammunition")
+        score.innerHTML = ("Objectives Destroyed: "+this.score)
+        lives.innerHTML = this.lives;
+        ammunition.innerHTML = this.ammunition;
+
 
                     //COMPARÇÕES
-//-------------------------------------------------------------------------------------------
+//PICK UP AMMUNITION--------------------------------------------------------------------------------
     for ( let i = 0 ; i<this.ammunitions.length; i++){
       const ammo = this.ammunitions[i];
 
       if(this.ammunitions.length>0){
-      console.log(this.ammunitions)
+
       if (this.player.left === ammo.left && this.player.top === ammo.top){
         	this.ammunition ++
           this.ammunitions[0].destroyed()
-          console.log(this.ammunitions)
+          ammunition.style.color = "green"
+          ammunition.style.fontWeight = "bold"
+          setInterval(() => {
+            ammunition.style.color = "black"
+          ammunition.style.fontWeight = "normal"
+          }, 1000);
           this.ammunitions.shift()
       }}
     }
 
+ //PICK UP LIVES--------------------------------------------------------------------------------
+    for ( let i = 0 ; i<this.livesArray.length; i++){
+      const live = this.livesArray[i];
 
-//-------------------------------------------------------------------------------------------
+      if(this.livesArray.length>0){
+
+      if (this.player.left === live.left && this.player.top === live.top){
+        	this.lives += 5
+          this.livesArray[0].destroyed()
+          lives.style.color = "green"
+          lives.style.fontWeight = "bold"
+          setInterval(() => {
+            lives.style.color = "black"
+            lives.style.fontWeight = "normal"
+          }, 500);
+          this.livesArray.shift()
+      }}
+    }
+
+
+
+//AMUNITION DESTROY OBJECTIVE------------------------------------------------------------------------------
       for(let i=0; i<this.myBombs.length;i++){
         const myBomb = this.myBombs[i];
 
         setInterval(()=>{
-          myBomb.exploded = true}, 3000)
+          myBomb.exploded = true}, 1500)
 
         if(this.objectives.length>0 && myBomb.exploded===true){
         if(myBomb.left === this.objectives[0].left && myBomb.top === this.objectives[0].top){
@@ -93,7 +140,7 @@ class Game {
           
         }}
       }
-//------------------------------------------------------------------------------------------
+//BOMBS EXPLOSION------------------------------------------------------------------------------
       for(let i = 0; i<this.bombs.length; i++){
         
           const bomb = this.bombs[i];
@@ -104,6 +151,13 @@ class Game {
           
           if (this.player.left === bomb.left || this.player.top === bomb.top)
           {
+            let fireDiv = document.getElementById("burning-div")
+            lives.style.color = "red"
+            lives.style.fontWeight = "bold"
+            setInterval(() => {
+              lives.style.color = "black"
+              lives.style.fontWeight = "normal"
+            }, 500);
             setTimeout(()=>{this.lives --},250);
             
           }}
@@ -114,12 +168,7 @@ class Game {
             this.endGame();
       }
       }
-     let score  = document.getElementById("game-score")
-      let lives = document.getElementById("lives")
-      let ammunition = document.getElementById("ammunition")
-      score.innerHTML = ("Objectives Destroyed: "+this.score)
-      lives.innerHTML = this.lives;
-      ammunition.innerHTML = this.ammunition;
+
 
 // CREATE BOMBS ----------------------------------------------------------------------------
     
@@ -131,6 +180,17 @@ class Game {
               this.loadingBomb = false;
           }, 500)
       }
+
+// CREATE LIVES ----------------------------------------------------------------------------
+    
+  	if(this.livesArray.length < 1 && !this.loadingLives) 
+    {
+        this.loadingLives=true;
+        setTimeout(()=>{
+            this.livesArray.push(new Live(this.gameScreen));
+            this.loadingLives = false;
+        }, 15000)
+    }
 
 // CREATE OBJECTIVES ----------------------------------------------------------------------------
 
@@ -161,21 +221,50 @@ class Game {
       checkScore(){
 
         let levelDisplay = document.getElementById("level-display")
+       
     
         if(this.score > 2 && this.score < 7){ // level 2
           this.numberOfBombs = 2
           levelDisplay.innerHTML = "Level 2"
+        
+          if(this.checkPoint[0]===false){
+        let levelUpDiv = document.getElementById("lvl-up-div")
+        levelUpDiv.style.display = "block";
+        setTimeout(()=>{levelUpDiv.style.display = "none"},1500)
+        this.checkPoint[0] = true
+      }
+
         }
+
         if(this.score > 5 && this.score < 10){ // level 3
           this.numberOfBombs = 3 
           levelDisplay.innerHTML = "Level 3"
+          if(this.checkPoint[1]===false){
+            let levelUpDiv = document.getElementById("lvl-up-div")
+            levelUpDiv.style.display = "block";
+            setTimeout(()=>{levelUpDiv.style.display = "none"},1500)
+            this.checkPoint[1] = true
+          }
+    
         }
+
         if(this.score > 8 && this.score < 13){ // level 4
           this.numberOfBombs = 4
           levelDisplay.innerHTML = "Level 4"
+          if(this.checkPoint[2]===false){
+            let levelUpDiv = document.getElementById("lvl-up-div")
+            levelUpDiv.style.display = "block";
+            setTimeout(()=>{levelUpDiv.style.display = "none"},1500)
+            this.checkPoint[2] = true
+          }
+    
         }
 
       }
+
+
+      
+
 
       endGame(){
         let statusList = document.getElementById("status-list")
