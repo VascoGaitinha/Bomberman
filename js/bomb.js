@@ -22,12 +22,10 @@ class Bomb {
             this.generateExplosion(this.gameScreen, this.left, this.top)
           }.bind(this), 3000)   
 
-          
           setTimeout(() => {
             this.removeExplosion()
             this.removeBomb()
         }, 3350);
-
     }
 
     generateExplosion(gamescreen, bombleft, bombtop) {
@@ -35,20 +33,18 @@ class Bomb {
             new Explosion(gamescreen, i * 50, bombtop);
             new Explosion(gamescreen, bombleft, i * 50);
         }
-}
+    }
 
     removeExplosion(){
         let explosions = document.querySelectorAll(".explosion")
         explosions.forEach(exp =>{
         exp.remove()
-    })
+        })
     }
 
     removeBomb(){
         this.element.remove()
         this.obstacles.shift()
-
     }
-
 
 }

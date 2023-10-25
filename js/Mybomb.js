@@ -26,7 +26,6 @@ class myBomb {
             this.removeExplosion()
             this.removeBomb()
         }, 1750);
-
     }
 
     removeExplosion(){
@@ -37,10 +36,8 @@ class myBomb {
     }
 
     removeBomb(){
-
         this.element.remove()
         this.obstacles.shift()
-
     }
 
 

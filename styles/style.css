@@ -1,23 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 
 *{
-  font-family: "Shadows Into Light";
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(255,134,49);
+  -webkit-text-stroke: 1.5px rgb(127, 36, 16); 
+  
 }
 
 body {
+  margin:0;
   padding: 0;
   text-align: center;
+  height: 100%;
+  background-color: yellowgreen;
+  
 }
 
 #game-intro {
   padding: 20px 0px;
+  height:500px;
 }
 
-#game-container {
+#game-container   {
   display: flex;
   width: 100vw;
   padding: 20px 0px;
   justify-content: center;
+  
 }
 
 #game-screen {
@@ -59,12 +67,6 @@ body button {
   margin-bottom: 20px;
 }
 
-.game-slot{
-  background: rgb(95,6,65);
-  background: radial-gradient(circle, rgba(95,6,65,0.8155637254901961) 30%, rgba(95,6,44,1) 90%);
-
-}
-
 .game-slot img {
   width:40px;
   height:40px;
@@ -77,16 +79,15 @@ body button {
 
 #lvl-up-div{
   position: absolute;
-  font-size:100px;
-  left: 430px;
+  font-size:80px;
+  left: 440px;
   top:20px;
   opacity: 0.66;
-  text-shadow: yellow 2px 5px, yellowgreen 4px 10px;
+  text-shadow: rgb(127, 36, 16) 2px 5px, red 3px 6px;
   display:none;
 }
 
 #status-list{
- 
   position: absolute;
   top:150px;
   left:150px;
@@ -94,8 +95,111 @@ body button {
   text-shadow: #870007;
   display:none;
 }
+
 #status-list p{
   margin:0 auto;
- 
 }
 
+/* BUTTONS */
+
+.btn-5 {
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  background: rgb(255,27,0);
+background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
+}
+.btn-5:hover {
+  color: #f0094a;
+  text-shadow: 1px 1px 2px rgb(127, 36, 16);
+  background: transparent;
+  box-shadow:none;
+}
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: rgb(255,134,49); /* asjhdsaljdfgohjsafglajhsdfsgdfas */
+  box-shadow:
+   -1px -1px 5px 0px rgb(127, 36, 16),
+   7px 7px 20px 0px #0003,
+   4px 4px 5px 0px #0002;
+  transition:400ms ease all;
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.custom-btn{
+  font-size: 2em;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textimage{
+  width:10px;
+  height:10px;
+  
+}
+
+#game-name{
+  letter-spacing: 5px;
+  text-shadow: 0 2px 1px red,
+  1px 3px 1px red,
+  2px 4px 1px red;
+}
+
+#instructions{
+  font-size: 1.75em;
+}
+
+#tijolinho {
+  
+  background-image: url(../images/tijolinho.png);
+  background-size: 50px;
+  background-repeat: repeat;
+  width: 550px;
+  height: 550px;
+  position: absolute;
+  top: 0px;
+  left: 345px;
+  z-index: -1;
+  display:none;
+  opacity: 0.5; /* Set the desired opacity value (0.0 to 1.0) */
+}

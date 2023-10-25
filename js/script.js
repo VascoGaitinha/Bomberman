@@ -32,11 +32,8 @@ window.onload = function () {
       " ", // space
     ];
 
-    // Check if the pressed key is in the possibleKeystrokes array
     if (possibleKeystrokes.includes(key)) {
       event.preventDefault();
-
-      // Update player's directionX and directionY based on the key pressed
       switch (key) {
         case "ArrowLeft":
           game.player.directionX = -50;
@@ -46,18 +43,21 @@ window.onload = function () {
           break;
         case "ArrowUp":
           game.player.directionY = -50;
+          
           setTimeout(()=>{
             game.player.directionY = 0;
           },15)
           break;
         case "ArrowRight":
           game.player.directionX = 50;
+          
           setTimeout(()=>{
             game.player.directionX = 0;
           },15)
           break;
         case "ArrowDown":
           game.player.directionY = 50;
+          
           setTimeout(()=>{
             game.player.directionY = 0;
           },15)
@@ -68,17 +68,17 @@ window.onload = function () {
           game.ammunition --;
           let ammunition = document.getElementById("ammunition")
           ammunition.style.color = "red"
-          ammunition.style.fontWeight = "bold"
+          
           setInterval(() => {
-            ammunition.style.color = "black"
-          ammunition.style.fontWeight = "normal"
+            ammunition.style.color = "rgb(255,134,49)"
+          
           }, 1000);
           }
         }
     }
   }
 
-   /*function handleKeyup(event) {
+  function playerSwitch(event) {
     const key = event.key;
     const possibleKeystrokes = [
       "ArrowLeft",
@@ -87,30 +87,25 @@ window.onload = function () {
       "ArrowDown",
     ];
 
-    // Check if the pressed key is in the possibleKeystrokes array
-   if (possibleKeystrokes.includes(key)) {
+    if (possibleKeystrokes.includes(key)) {
       event.preventDefault();
-
-      // Update player's directionX and directionY based on the key pressed
       switch (key) {
         case "ArrowLeft":
-          game.player.directionX = 0;
+          game.player.element.src = "./images/charLeft.png"
           break;
         case "ArrowUp":
-          game.player.directionY = 0;
+          game.player.element.src = "./images/charUp.png"
           break;
         case "ArrowRight":
-          game.player.directionX = 0;
+          game.player.element.src = "./images/charRight.png"
           break;
         case "ArrowDown":
-          game.player.directionY = 0;
+          game.player.element.src = "./images/charDown.png"
           break;
-      }
+        }
     }
+  }
 
-  }*/
-
-  // Add the handleKeydown function as an event listener for the keydown event
   window.addEventListener("keydown", handleKeydown);
- /* window.addEventListener("keyup", handleKeyup);*/
-};
+  window.addEventListener("keydown", playerSwitch);
+}

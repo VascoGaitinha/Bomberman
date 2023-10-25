@@ -16,6 +16,7 @@ class Ammunition {
 
         this.pickedUp=false;
     }
+    
     destroyed(){
         this.element.remove()
     }
