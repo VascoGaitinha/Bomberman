@@ -68,10 +68,8 @@ window.onload = function () {
           game.ammunition --;
           let ammunition = document.getElementById("ammunition")
           ammunition.style.color = "red"
-          
           setInterval(() => {
             ammunition.style.color = "rgb(255,134,49)"
-          
           }, 1000);
           }
         }

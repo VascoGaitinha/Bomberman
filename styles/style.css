@@ -11,8 +11,7 @@ body {
   padding: 0;
   text-align: center;
   height: 100%;
-  background-color: yellowgreen;
-  
+  background-color: orange;
 }
 
 #game-intro {
@@ -24,8 +23,7 @@ body {
   display: flex;
   width: 100vw;
   padding: 20px 0px;
-  justify-content: center;
-  
+  justify-content: center; 
 }
 
 #game-screen {
