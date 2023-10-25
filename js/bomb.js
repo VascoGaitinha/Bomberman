@@ -14,7 +14,7 @@ class Bomb {
         this.element.classList.add("bomb")
         this.exploded = false;
         this.obstacles= obstacles
-        this.explode() // adicionado
+        this.explode()
     }
 
     explode(){
@@ -27,6 +27,7 @@ class Bomb {
             this.removeBomb()
         }, 3350);
     }
+
 
     generateExplosion(gamescreen, bombleft, bombtop) {
         for (let i=0; i<10; i++){

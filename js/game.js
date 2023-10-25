@@ -30,7 +30,7 @@ class Game {
     this.livesArray = [];
     this.checkPoint = [false, false, false]
     //STATUS
-    this.score = 3;
+    this.score = 0;
     this.ammunition = 0;
     this.lives = 10;
     this.numberOfBombs = 1;
@@ -68,12 +68,15 @@ class Game {
   update() {
       this.player.move();
       this.checkScore();
-      console.log(this.numberOfBombs)
+      this.highScore();
+      let highScore = localStorage.getItem("highscore");
       let score  = document.getElementById("game-score")
       let lives = document.getElementById("lives")
       let ammunition = document.getElementById("ammunition")
+      let highScoreP = document.getElementById("high-score")
       score.innerHTML = ("Objectives Destroyed: "+this.score)
       lives.innerHTML = this.lives;
+      highScoreP.innerHTML = ("High Score: "+highScore)
       ammunition.innerHTML = this.ammunition;
 
 
@@ -85,11 +88,9 @@ class Game {
       if (this.player.left === ammo.left && this.player.top === ammo.top){
         	this.ammunition ++
           this.ammunitions[0].destroyed()
-          ammunition.style.color = "green"
-          
+          ammunition.style.color = "green"          
           setInterval(() => {
             ammunition.style.color = "rgb(255,134,49)"
-          
           }, 1000);
           this.ammunitions.shift()
       }}
@@ -102,11 +103,9 @@ class Game {
       if (this.player.left === live.left && this.player.top === live.top){
         	this.lives += 5
           this.livesArray[0].destroyed()
-          lives.style.color = "green"
-          
+          lives.style.color = "green"          
           setInterval(() => {
-            lives.style.color = "rgb(255,134,49)"
-            
+            lives.style.color = "rgb(255,134,49)"            
           }, 500);
           this.livesArray.shift()
       }}
@@ -119,7 +118,6 @@ class Game {
           myBomb.exploded = true}, 1500)
         if(this.objectives.length>0 && myBomb.exploded===true){
         if(myBomb.left === this.objectives[0].left && myBomb.top === this.objectives[0].top){
-          console.log("MESMA POSICAO DO OBJETIVO  ")
           this.score ++
           this.objectives[0].destroyed()
           this.objectives.shift()
@@ -134,12 +132,9 @@ class Game {
           if(bomb.exploded === true){
           if (this.player.left === bomb.left || this.player.top === bomb.top)
           {
-            let fireDiv = document.getElementById("burning-div")
-            lives.style.color = "red"
-            
+            lives.style.color = "red"           
             setInterval(() => {
-              lives.style.color = "rgb(255,134,49)"
-              
+              lives.style.color = "rgb(255,134,49)"             
             }, 500);
             setTimeout(()=>{this.lives --},250);
           }}
@@ -148,7 +143,6 @@ class Game {
             this.lives=0;
             this.endGame();
       }}
-
 
 // CREATE BOMBS ----------------------------------------------------------------------------
     
@@ -238,6 +232,16 @@ class Game {
 
       }
 
+      highScore(){
+        
+        let highScore = localStorage.getItem("highscore");
+        if( this.score > highScore){
+          localStorage.setItem("highscore", this.score)
+        }
+        console.log("current score "+this.score)
+        console.log("highscore is "+highScore)
+      }
+
       endGame(){
         let statusList = document.getElementById("status-list")
         let tijolinho = document.getElementById("tijolinho")
@@ -249,5 +253,5 @@ class Game {
           bomb.element.remove()});
           this.gameScreen.style.display="none";
           this.gameEndScreen.style.display="block";
-      }
+        }
 }
