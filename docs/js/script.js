@@ -92,16 +92,16 @@ window.onload = function () {
       event.preventDefault();
       switch (key) {
         case "ArrowLeft":
-          game.player.element.src = "./images/charLeft.png"
+          game.player.element.src = "./docs/images/charLeft.png"
           break;
         case "ArrowUp":
-          game.player.element.src = "./images/charUp.png"
+          game.player.element.src = "./docs/images/charUp.png"
           break;
         case "ArrowRight":
-          game.player.element.src = "./images/charRight.png"
+          game.player.element.src = "./docs/images/charRight.png"
           break;
         case "ArrowDown":
-          game.player.element.src = "./images/charDown.png"
+          game.player.element.src = "./docs/images/charDown.png"
           break;
         }
     }

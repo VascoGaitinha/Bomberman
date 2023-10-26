@@ -4,7 +4,7 @@ class Objective {
         this.left = 50 * Math.floor(Math.random() * 10);
         this.top = 50 * Math.floor(Math.random() * 10);
         this.element=document.createElement("img");
-        this.element.src= "./images/objective.png"
+        this.element.src= "./docs/images/objective.png"
         this.directionX = 0;
         this.directionY = 0;
         this.element.style.width="50px";

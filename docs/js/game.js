@@ -18,7 +18,7 @@ class Game {
       500,
       50,
       50,
-      "./images/charUp.png"
+      "./docs/images/charUp.png"
     );
     this.height = 500;
     this.width = 500;

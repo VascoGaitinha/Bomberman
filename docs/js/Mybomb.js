@@ -4,7 +4,7 @@ class myBomb {
         this.left = playerleft;
         this.top = playertop;
         this.element=document.createElement("img");
-        this.element.src= "./images/dinamite.png"
+        this.element.src= "./docs/images/dinamite.png"
         this.element.style.width="50px";
         this.element.style.height="50px";
         this.element.style.position ="absolute";
@@ -20,7 +20,7 @@ class myBomb {
 
     explode(){
         setTimeout(function() {
-            this.element.src="./images/myExplosion.gif"
+            this.element.src="./docs/images/myExplosion.gif"
           }.bind(this), 1500)   
           setTimeout(() => {
             this.removeExplosion()
