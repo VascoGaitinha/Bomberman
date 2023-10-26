@@ -1,0 +1,228 @@
+
+*{
+  font-family: "Times New Roman", Times, serif;
+  color: rgb(255,134,49);
+  -webkit-text-stroke: 1.5px rgb(127, 36, 16); 
+  
+}
+
+body {
+  margin:0;
+  padding: 0;
+  text-align: center;
+  height: 100%;
+  background-color: orange;
+}
+
+#game-intro {
+  padding: 0px 0px;
+  height:500px;
+}
+
+#game-container   {
+  display: flex;
+  width: 100vw;
+  padding: 20px 0px;
+  justify-content: center; 
+}
+
+#game-screen {
+  margin-top:25px;
+  display: none;
+  align-content: center;
+  padding: 0px 0px;
+  overflow: hidden;
+  position: relative;
+  background-image: url(../images/background.png);
+  background-repeat: repeat;
+}
+
+
+#game-end {
+  display: none;
+}
+
+#game-end > h1{
+  font-size: 2em;
+}
+
+.game-intro p {
+  font-size: 18px;
+  font-family: "Verdana";
+}
+
+.logo-img {
+  width: 350px;
+}
+
+.arrows-img {
+  width: 150px;
+}
+
+body button {
+  font-size: 30px;
+  background-color: #870007;
+  color: #fff;
+  padding: 20px 40px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.game-slot{
+  padding: 0px;
+}
+
+.game-slot img {
+  width:40px;
+  height:40px;
+}
+
+.status-div{
+  display: flex;
+  align-items: center;
+}
+
+#lvl-up-div{
+  position: absolute;
+  font-size:80px;
+  left: 500px;
+  top:70px;
+  opacity: 0.66;
+  text-shadow: rgb(127, 36, 16) 2px 5px, red 3px 6px;
+  display:none;
+}
+
+#status-list{
+  position: absolute;
+  top:150px;
+  left:150px;
+  font-size:2.75em;
+  text-shadow: #870007;
+  display:none;
+}
+
+#status-list p{
+  margin:0 auto;
+}
+
+/* BUTTONS */
+
+.btn-5 {
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  background: rgb(255,27,0);
+background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
+}
+.btn-5:hover {
+  color: #f0094a;
+  text-shadow: 1px 1px 2px rgb(127, 36, 16);
+  background: transparent;
+  box-shadow:none;
+}
+.btn-5:before,
+.btn-5:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: rgb(255,134,49); /* asjhdsaljdfgohjsafglajhsdfsgdfas */
+  box-shadow:
+   -1px -1px 5px 0px rgb(127, 36, 16),
+   7px 7px 20px 0px #0003,
+   4px 4px 5px 0px #0002;
+  transition:400ms ease all;
+}
+.btn-5:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.btn-5:hover:before,
+.btn-5:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.custom-btn{
+  font-size: 2em;
+  text-align: center;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textimage{
+  width:10px;
+  height:10px;
+  
+}
+
+#game-name{
+  font-size: 3em;
+  line-height: 1em;
+  letter-spacing: 5px;
+  margin-bottom: 75px;
+  text-shadow: 0 2px 1px red,
+  1px 3px 1px red,
+  2px 4px 1px red;
+}
+
+#instructions{
+  font-size: 1.75em;
+}
+
+#tijolinho {
+  background-image: url(../images/tijolinho.png);
+  background-size: 50px;
+  background-repeat: repeat;
+  width: 550px;
+  height: 550px;
+  position: absolute;
+  top: 22px;
+  left: 405px;
+  z-index: -1;
+  display:none;
+  opacity: 0.5; /* Set the desired opacity value (0.0 to 1.0) */
+  box-shadow: 5px 5px 5px black, -4px -4px 5px black;
+}
+
+#game-end h1{
+  font-size: 4.5em;
+  margin-bottom: 100px;
+}
+
+#game-end p{
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+#game-end button{
+  margin-top:150px;
+}
