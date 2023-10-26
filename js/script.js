@@ -17,8 +17,8 @@ window.onload = function () {
     game.start(); // added
   }
   restartButton.addEventListener("click", function(){
-    location.reload();
-    startGame();
+    restartGame(); 
+    
   })
 
   function restartGame(){

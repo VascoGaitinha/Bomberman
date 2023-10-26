@@ -15,7 +15,7 @@ body {
 }
 
 #game-intro {
-  padding: 20px 0px;
+  padding: 0px 0px;
   height:500px;
 }
 
@@ -42,6 +42,10 @@ body {
   display: none;
 }
 
+#game-end > h1{
+  font-size: 2em;
+}
+
 .game-intro p {
   font-size: 18px;
   font-family: "Verdana";
@@ -64,6 +68,9 @@ body button {
   box-shadow: 0;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+.game-slot{
+  padding: 0px;
 }
 
 .game-slot img {
@@ -178,7 +185,10 @@ background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
 }
 
 #game-name{
+  font-size: 3em;
+  line-height: 1em;
   letter-spacing: 5px;
+  margin-bottom: 75px;
   text-shadow: 0 2px 1px red,
   1px 3px 1px red,
   2px 4px 1px red;
@@ -201,4 +211,18 @@ background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
   display:none;
   opacity: 0.5; /* Set the desired opacity value (0.0 to 1.0) */
   box-shadow: 5px 5px 5px black, -4px -4px 5px black;
+}
+
+#game-end h1{
+  font-size: 4.5em;
+  margin-bottom: 100px;
+}
+
+#game-end p{
+  font-size: 1.5em;
+  margin-bottom: 0;
+}
+
+#game-end button{
+  margin-top:150px;
 }

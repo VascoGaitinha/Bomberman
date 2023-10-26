@@ -1,6 +1,9 @@
 
+startButton.addEventListener("click", function () {
+    startGame();
+  });
 
-
-if( this.score > highScore){
-    highScore=this.Score
-}
+function restartGame(){
+    location.reload();
+    startGame();
+  }
