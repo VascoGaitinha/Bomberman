@@ -205,8 +205,8 @@ background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
   width: 550px;
   height: 550px;
   position: absolute;
-  top: 22px;
-  left: 405px;
+  top: calc(50% - 257px);
+  left: calc(50% - 274px);
   z-index: -1;
   display:none;
   opacity: 0.5; /* Set the desired opacity value (0.0 to 1.0) */
@@ -225,4 +225,8 @@ background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
 
 #game-end button{
   margin-top:150px;
+}
+
+main{
+  position: relative;
 }

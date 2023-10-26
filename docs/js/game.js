@@ -48,7 +48,7 @@ class Game {
     let statusList = document.getElementById("status-list")
     let tijolinho = document.getElementById("tijolinho")
     statusList.style.display= "block";
-    tijolinho.style.display= "block";
+    tijolinho.style.display= "flex";
     this.gameScreen.style.height = `${this.height}px`;
     this.gameScreen.style.width = `${this.width}px`;
     this.startScreen.style.display = "none";
